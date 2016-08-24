@@ -1,0 +1,24 @@
+version: '2'
+services:
+  db:
+    image: mysql:5.7
+    ports:
+      - "3307:3306"
+    volumes:
+      - "./.data/db:/var/lib/mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: atgcloud
+  atgames_dev:
+    depends_on:
+      - db
+    links:
+      - db
+    image: atgames/dev:0.1
+    ports:
+      - "2222:22"
+      - "3000:3000"
+    # container_name: atgames_dev
+    volumes:
+      - "~/work:/work"
+      - ".:/docker"
+      - "./.data/gems:/usr/local/rvm/gems"

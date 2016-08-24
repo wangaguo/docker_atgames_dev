@@ -1,0 +1,3 @@
+#!/bin/bash
+ln -sf /work/docker-setting/.gitconfig ~/.gitconfig
+ln -sf /work/docker-setting/id_rsa ~/.ssh/id_rsa
