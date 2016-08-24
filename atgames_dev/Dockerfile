@@ -29,10 +29,18 @@ RUN echo "source /usr/local/rvm/scripts/rvm" >> ~/.bashrc
 RUN /bin/bash -l -c "rvm install 2.0.0-p481" # for D2D
 RUN /bin/bash -l -c "rvm install 2.1.10" # for ADS
 
+# NVM
+RUN \curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.1/install.sh | PROFILE=/etc/bash.bashrc NVM_DIR=/usr/local/nvm bash
+RUN groupadd nvm
+RUN sudo chmod g+w /usr/local/nvm/
+RUN sudo chown -R root:nvm /usr/local/nvm/
+RUN /bin/bash -l -c "source /usr/local/nvm/nvm.sh; nvm install 5.6.0"
+
 # Add user
-RUN useradd -m -G sudo,root,rvm -s /bin/bash ubuntu
+RUN useradd -m -G sudo,root,rvm,nvm -s /bin/bash ubuntu
 RUN echo ubuntu:atgames | chpasswd
 RUN echo 'ubuntu\tALL=(ALL:ALL) NOPASSWD:ALL' >> /etc/sudoers.d/90-cloud-users
+RUN sudo -uubuntu mkdir -p /home/ubuntu/.ssh
 
 # Setting Environment
 RUN echo "source /usr/local/rvm/scripts/rvm" >> /etc/bash.bashrc
