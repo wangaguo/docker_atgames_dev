@@ -1,2 +1,0 @@
-#!/bin/bash
-docker build -t atgames/dev:0.1 atgames_dev

@@ -10,6 +10,6 @@ memcached -d -u daemon
 # sphinx
 
 # go
-/docker/dev-go
+/docker/setting
 
 exec "$@"
