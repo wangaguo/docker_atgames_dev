@@ -32,8 +32,8 @@ RUN /bin/bash -l -c "rvm install 2.1.10" # for ADS
 # NVM
 RUN \curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.1/install.sh | PROFILE=/etc/bash.bashrc NVM_DIR=/usr/local/nvm bash
 RUN groupadd nvm
-RUN sudo chmod g+w /usr/local/nvm/
-RUN sudo chown -R root:nvm /usr/local/nvm/
+RUN chmod g+w /usr/local/nvm/
+RUN chown -R root:nvm /usr/local/nvm/
 RUN /bin/bash -l -c "source /usr/local/nvm/nvm.sh; nvm install 5.6.0"
 
 # Add user
