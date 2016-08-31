@@ -25,7 +25,7 @@ RUN locale-gen "zh_TW.UTF-8" # fix git log display UTF-8
 RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 RUN apt-get install -y curl
 RUN \curl -sSL https://get.rvm.io | bash -s stable
-RUN echo "source /usr/local/rvm/scripts/rvm" >> ~/.bashrc
+RUN echo "source /usr/local/rvm/scripts/rvm" >> /etc/bash.bashrc
 RUN /bin/bash -l -c "rvm install 2.0.0-p481" # for D2D
 RUN /bin/bash -l -c "rvm install 2.1.10" # for ADS
 
@@ -41,9 +41,6 @@ RUN useradd -m -G sudo,root,rvm,nvm -s /bin/bash ubuntu
 RUN echo ubuntu:atgames | chpasswd
 RUN echo 'ubuntu\tALL=(ALL:ALL) NOPASSWD:ALL' >> /etc/sudoers.d/90-cloud-users
 RUN sudo -uubuntu mkdir -p /home/ubuntu/.ssh
-
-# Setting Environment
-RUN echo "source /usr/local/rvm/scripts/rvm" >> /etc/bash.bashrc
 
 # Define mountable directories.
 VOLUME ["/work"]

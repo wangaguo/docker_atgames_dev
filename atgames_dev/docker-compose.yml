@@ -14,6 +14,7 @@ services:
     links:
       - db
     image: atgames/dev:0.1
+    hostname: atgames_dev
     ports:
       - "2222:22"
       - "3000:3000"
@@ -22,3 +23,4 @@ services:
       - "~/work:/work"
       - ".:/docker"
       - "./.data/gems:/usr/local/rvm/gems"
+
