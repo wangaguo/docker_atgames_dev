@@ -1,2 +1,3 @@
 #!/bin/bash
-docker-compose exec --user ubuntu atgames_dev bash
+docker-compose exec --user ubuntu:rvm atgames_dev bash
+
