@@ -1,16 +1,17 @@
 #!/bin/bash
 INIT_FLAG="Env init done"
 MY_HOME="/home/ubuntu"
+MY_SHELL="/etc/bash.bashrc"
 
-if grep -q "$INIT_FLAG" /etc/bash.bashrc
+if grep -q "$INIT_FLAG" $MY_SHELL
 then
   echo "Env init done (before)"
 else
   # gemset
-  chown -R root:rvm /usr/local/rvm/gems
   source /usr/local/rvm/scripts/rvm
   rvm ruby-2.0.0-p481 --create
   rvm ruby-2.1.10 --create
+  chown -R root:rvm /usr/local/rvm/gems
 
   # git setting
   ln -sf /work/docker-setting/.gitconfig $MY_HOME/.gitconfig
@@ -21,10 +22,19 @@ else
   chown ubuntu:ubuntu $MY_HOME/.ssh/authorized_keys
 
   # bash setting
-  echo "export TERM=xterm-256color " >> /etc/bash.bashrc
-  echo "bind '\"\e[5~\": history-search-backward'" >> /etc/bash.bashrc
-  echo "bind '\"\e[6~\": history-search-forward'" >> /etc/bash.bashrc
+  ## terminal
+  echo "export TERM=xterm-256color " >> $MY_SHELL
 
-  echo "# $INIT_FLAG" >> /etc/bash.bashrc
+  ## key binding
+  echo "bind '\"\e[5~\": history-search-backward'" >> $MY_SHELL
+  echo "bind '\"\e[6~\": history-search-forward'" >> $MY_SHELL
+
+  ## locale
+  echo "export LC_CTYPE=zh_TW.UTF-8" >> $MY_SHELL
+  echo "export LC_MESSAGES=zh_TW.UTF-8" >> $MY_SHELL
+  echo "export LC_TIME=zh_TW.UTF-8" >> $MY_SHELL
+
+  # set init flag
+  echo "# $INIT_FLAG" >> $MY_SHELL
   echo "Env init done"
 fi
