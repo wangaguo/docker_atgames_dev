@@ -6,6 +6,8 @@ vim ~/.your_shell_rc
 alias dk='docker'
 alias dkc='docker-compose'
 alias dke='docker exec -it '
+alias devup='cd ~/cumtom_path/docker_atgames_dev/atgames_dev; dkc up -d'
+alias devgo='cd ~/custom_path/wa/docker_atgames_dev/atgames_dev; ./go'
 ```
 
 ## How to build image
