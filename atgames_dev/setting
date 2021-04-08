@@ -17,10 +17,10 @@ else
   ln -sf /work/docker-setting/.gitconfig $MY_HOME/.gitconfig
 
   # ssh setting
-  ln -sf /work/docker-setting/id_rsa $MY_HOME/.ssh/id_rsa
+  # ln -sf /work/docker-setting/id_rsa $MY_HOME/.ssh/id_rsa
   ln -sf /work/docker-setting/config $MY_HOME/.ssh/config
-  cat /work/docker-setting/id_rsa.pub >> $MY_HOME/.ssh/authorized_keys
-  chown ubuntu:ubuntu $MY_HOME/.ssh/authorized_keys
+  # cat /work/docker-setting/id_rsa.pub >> $MY_HOME/.ssh/authorized_keys
+  # chown ubuntu:ubuntu $MY_HOME/.ssh/authorized_keys
 
   # bash setting
   ## terminal

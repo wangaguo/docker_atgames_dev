@@ -19,7 +19,7 @@ services:
     #  - "2222:22"
       - "80:80"
       - "3000:3000"
-      - "5000:5000"
+        #- "5000:5000"
       - "8080:8080"
       - "10000:10000"
     # container_name: atgames_dev
@@ -27,4 +27,6 @@ services:
       - "~/work:/work"
       - ".:/docker"
       - "./.data/gems:/usr/local/rvm/gems"
-
+      - "$SSH_AUTH_SOCK:/.ssh-agent/socket-origin"
+    environment:
+      - SSH_AUTH_SOCK=/.ssh-agent/socket-origin
